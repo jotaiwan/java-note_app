@@ -1,0 +1,153 @@
+/* frontend/src/components/notes/TextRenderer/TextRenderer.module.css */
+.textContainer {
+    line-height: 2.2;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+
+    /* CRITICAL: Ensure text is selectable */
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Make sure all child elements are selectable */
+.textContainer * {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Make sure all child elements inherit line height */
+.textContainer p,
+.textContainer span,
+.textContainer div,
+.textContainer blockquote,
+.textContainer pre,
+.textContainer code {
+    line-height: inherit;
+}
+
+.emptyText {
+    color: #999;
+    font-style: italic;
+    padding: 10px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+/* Link styles */
+.urlLink {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: 1px solid #cce5ff;
+    padding: 0 1px;
+    cursor: pointer;
+}
+
+.urlLink:hover {
+    color: #004d99;
+    border-bottom-color: #004d99;
+}
+
+/* Image link styles */
+.imageLink {
+    color: #10b981;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #f0f9ff;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid #bae6fd;
+}
+
+.imageLink:hover {
+    background-color: #e0f2fe;
+    color: #0d9488;
+}
+
+/* Attachment marker styles */
+.attachmentMarker {
+    display: inline;
+    color: #0066cc;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+
+    /* CRITICAL: Ensure markers don't block selection */
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+/* Blockquote styles */
+.blockquote {
+    border-left: 4px solid #4299e1;
+    padding: 12px 20px;
+    margin: 4px 0;
+    background-color: #ebf8ff;
+    border-radius: 0 8px 8px 0;
+    color: #2d3748;
+    font-style: italic;
+}
+
+/* Code block styles */
+.codeBlock {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 4px 0;
+}
+
+/* Strikethrough styles */
+.strikethrough {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* Highlight effect for attachments */
+.highlighted {
+    animation: highlightPulse 3s ease-in-out;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+@keyframes highlightPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Search highlight */
+.searchHighlight {
+    background-color: #ff7f00;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-weight: 700;
+    font-size: 1.15em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .textContainer {
+        line-height: 2.0;
+    }
+}

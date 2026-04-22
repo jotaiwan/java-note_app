@@ -1,0 +1,245 @@
+/* ViewMode.module.css */
+.contentHeader {
+    margin-bottom: 10px;
+}
+
+.headerRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.timelineNode {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.timelineNodeLatest {
+    background: #28a745;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+.timelineNodeOlder {
+    background: #6c757d;
+}
+
+.noteInfoHeader {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.leftBadges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.infoBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    height: 32px;
+}
+
+.idBadge {
+    background: #e7f5ff;
+    border-color: #74c0fc;
+    color: #1864ab;
+}
+
+.dateBadge {
+    background: #fff3bf;
+    border-color: #ffe066;
+    color: #e67700;
+}
+
+.attachmentsBadge {
+    background: #e7f5ff;
+    border-color: #74c0fc;
+    color: #1864ab;
+}
+
+/* Update button (when not in edit mode) */
+.updateButton {
+    background: #007bff;
+    border-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #0056b3;
+}
+
+.updateButton:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.updateButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Cancel button in edit mode */
+.cancelButton {
+    background: #6c757d;
+    border-color: #545b62;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #545b62;
+}
+
+.cancelButton:hover:not(:disabled) {
+    background: #545b62;
+}
+
+.cancelButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Save button in edit mode - green success color */
+.saveButton {
+    background: #28a745;
+    border-color: #218838;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #218838;
+}
+
+.saveButton:hover:not(:disabled) {
+    background: #218838;
+}
+
+.saveButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.noteTextContainer {
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Expand button */
+.expandButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #dee2e6;
+    border-radius: 16px;
+    background: #f8f9fa;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.expandIcon {
+    transition: transform 0.2s ease;
+    width: 18px;
+    height: 18px;
+}
+
+.expandIcon.expanded {
+    transform: rotate(180deg);
+}
+
+/* Copy button */
+.copyButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #dee2e6;
+    border-radius: 16px;
+    background: #f8f9fa;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.copyButton svg {
+    width: 18px;
+    height: 18px;
+}
+
+.headerPreview {
+    color: #666;
+    margin-left: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.clickablePreview {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+    /* color: #0066cc; */
+    text-decoration: underline;
+    text-decoration-color: transparent;
+}
+
+.clickablePreview:hover {
+    background-color: rgba(0, 102, 204, 0.1);
+    /* text-decoration-color: #0066cc; */
+}
+
+/* Search highlight in preview text */
+.searchHighlight {
+    background-color: #ff7f00;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.15em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {    .clickablePreview {
+        /* color: #66b0ff; */
+    }
+
+    .clickablePreview:hover {
+        background-color: rgba(102, 176, 255, 0.1);
+        /* text-decoration-color: #66b0ff; */
+    }
+}

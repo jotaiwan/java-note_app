@@ -1,0 +1,1118 @@
+/* frontend/src/components/notes/NoteRow/NoteRow.module.css */
+.noteRow {
+    position: relative;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+/* Edit mode active - more space */
+.editModeActive {
+    margin-bottom: 24px;
+    /* Increased bottom margin when editing */
+}
+
+.editModeActive .noteContent {
+    background-color: #f8fdff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px 20px;
+    /* Slightly increased padding */
+}
+
+/* Timeline */
+.timelineNode {
+    position: absolute;
+    left: -26px;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid white;
+    box-shadow: 0 0 0 1px #dee2e6;
+    z-index: 2;
+}
+
+.timelineNodeLatest {
+    background-color: #40c057;
+}
+
+.timelineNodeOlder {
+    background-color: #adb5bd;
+}
+
+/* Note content */
+.noteContent {
+    background-color: white;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-left: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    min-height: auto;
+}
+
+.noteContentLatest {
+    background-color: #f8fdff;
+    border-color: #339af0;
+    box-shadow: 0 2px 4px rgba(51, 154, 240, 0.1);
+}
+
+.noteContent:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Content header styles - more compact */
+.contentHeader {
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.headerRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+/* Note info header - UPDATED LAYOUT */
+.noteInfoHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 6px;
+}
+
+/* Left badges container - ID and Date close together */
+.leftBadges {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Generic badge styles - UPDATED with leftBadges */
+.infoBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Specific badge styles */
+.idBadge {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+.dateBadge {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border: 1px solid #e1bee7;
+}
+
+.imagesBadge {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+.attachmentsBadge {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+.updateBadge {
+    background-color: #fff3e0;
+    color: #f57c00;
+    border: 1px solid #ffe0b2;
+    font-size: 10px;
+}
+
+/* Update button styles */
+.updateButton {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 8px !important;
+    transition: background-color 0.2s;
+    font-weight: 600;
+}
+
+.updateButton:hover:not(:disabled) {
+    background-color: #357ae8;
+}
+
+.updateButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Cancel button styles */
+.cancelButton {
+    background-color: #f1f1f1;
+    color: #666;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    padding: 2px 8px !important;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.cancelButton:hover {
+    background-color: #e0e0e0;
+}
+
+/* Right section - push to far right */
+.rightSection {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+/* Update info container */
+.updateInfo {
+    margin-top: 2px;
+    padding-left: 20px;
+}
+
+/* Text container - more compact */
+.noteTextContainer {
+    padding-left: 10px;
+    border-left: 2px solid #e0e0e0;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.noteContentLatest .noteTextContainer {
+    border-left-color: #339af0;
+}
+
+/* Edit container styles */
+.editContainer {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #4a90e2;
+    background-color: #f8fdff;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.editHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.editLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a90e2;
+}
+
+.editActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emojiHint {
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Attach button */
+.attachButton {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #374151;
+}
+
+.attachButton:hover {
+    background: #e5e7eb;
+    border-color: #4a90e2;
+}
+
+/* Emoji text area styles */
+.emojiTextArea {
+    width: 100%;
+    min-height: 120px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    margin-bottom: 8px;
+}
+
+.emojiTextArea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.emojiTextArea:disabled {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Textarea styles */
+.editTextarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+
+.editTextarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.editTextarea:disabled {
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.editFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.charCount {
+    font-size: 11px;
+    color: #666;
+}
+
+.updatingIndicator {
+    font-size: 11px;
+    color: #4a90e2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(74, 144, 226, 0.3);
+    border-radius: 50%;
+    border-top-color: #4a90e2;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Image preview area - more compact and simplified */
+.noteImages {
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.imagesHeader {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.imagesTitle {
+    font-weight: 600;
+    color: #374151;
+}
+
+/* ===== NEW: Horizontal attachments layout ===== */
+.noteAttachments {
+    margin-top: 16px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.attachmentsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.attachmentsTitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.preloadStatus {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+/* Horizontal scrollable grid */
+.attachmentsHorizontalGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+/* Individual attachment item - horizontal card */
+.attachmentHorizontalItem {
+    flex: 0 0 auto;
+    width: 180px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.attachmentHorizontalItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #4a90e2;
+}
+
+.attachmentHorizontalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Preview area */
+.attachmentHorizontalPreview {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.thumbnailHorizontalContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnailHorizontal {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.iconHorizontalContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.fileHorizontalIcon {
+    font-size: 48px;
+    opacity: 0.7;
+}
+
+/* Load indicator */
+.loadHorizontalIndicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadHorizontalLoading {
+    color: #f59e0b;
+    font-size: 12px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Attachment info */
+.attachmentHorizontalInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.attachmentHorizontalName {
+    font-size: 12px;
+    font-weight: 500;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.attachmentHorizontalMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: #64748b;
+}
+
+.attachmentHorizontalType {
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.attachmentHorizontalSize {
+    color: #64748b;
+}
+
+/* States */
+.attachmentLoaded {
+    border-color: #10b981;
+}
+
+.attachmentError {
+    border-color: #ef4444;
+    opacity: 0.7;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ===== END: Horizontal attachments layout ===== */
+
+/* Old grid styles - keeping for backward compatibility */
+.imagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.imageItem {
+    transition: transform 0.2s;
+}
+
+.imageItem:hover {
+    transform: translateY(-2px);
+}
+
+.imageLink {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    background: white;
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.imageLink:hover {
+    border-color: #339af0;
+    box-shadow: 0 2px 8px rgba(51, 154, 240, 0.15);
+}
+
+.imagePreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+    flex-grow: 1;
+    position: relative;
+    padding: 4px;
+    border-radius: 3px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    min-height: 120px;
+}
+
+.imageIcon {
+    font-size: 24px;
+}
+
+.imageNumber {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 2;
+}
+
+/* Preload indicators */
+.preloadIndicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.preloadSuccess {
+    color: #10b981;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloadError {
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloadLoading {
+    color: #f59e0b;
+    background-color: rgba(245, 158, 11, 0.1);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 1.5s infinite;
+}
+
+/* Image states */
+.imageLoaded .imagePreview {
+    border-color: #10b981;
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.imageError .imagePreview {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.imageInfo {
+    text-align: center;
+    padding-top: 4px;
+}
+
+.imageName {
+    font-size: 11px;
+    font-weight: 500;
+    color: #343a40;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    max-height: 2.4em;
+}
+
+.noImages,
+.noAttachments {
+    text-align: center;
+    color: #868e96;
+    font-style: italic;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+/* Thumbnail styles */
+.thumbnailContainer {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 3px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 3px;
+}
+
+.iconContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    background: #f8f9fa;
+    border-radius: 3px;
+    border: 1px dashed #dee2e6;
+    position: relative;
+}
+
+/* Error container */
+.errorContainer {
+    color: #cc0000;
+    padding: 8px;
+    background-color: #ffe6e6;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Attachments preview (for edit mode) */
+.attachmentsPreview {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.attachmentsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.attachmentsTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.attachmentsSubtitle {
+    font-size: 11px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.attachmentsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.attachmentItem {
+    flex: 0 0 auto;
+    width: 160px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    background: white;
+    overflow: hidden;
+}
+
+.attachmentPreviewContainer {
+    position: relative;
+    height: 100px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.fileIconPreview {
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileIcon {
+    font-size: 24px;
+}
+
+.removeAttachmentButton {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.removeAttachmentButton:hover {
+    opacity: 1;
+}
+
+.attachmentInfo {
+    padding: 8px;
+}
+
+.attachmentTitle {
+    font-size: 11px;
+    font-weight: 500;
+    color: #343a40;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.attachmentDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #6b7280;
+}
+
+.attachmentTime,
+.attachmentSize {
+    font-size: 9px;
+}
+
+.filename {
+    margin-top: 2px;
+    color: #9ca3af;
+    font-size: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Pasted images preview */
+.pastedImagesPreview {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.pastedImagesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.pastedImagesTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.pastedImagesSubtitle {
+    font-size: 11px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.pastedImagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.pastedImageItem {
+    transition: transform 0.2s;
+}
+
+.pastedImageItem:hover {
+    transform: translateY(-2px);
+}
+
+.pastedImageContainer {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #dee2e6;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pastedImagePreview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.removePastedImageButton {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: background-color 0.2s;
+}
+
+.removePastedImageButton:hover {
+    background: #ef4444;
+}
+
+.pastedImageInfo {
+    padding: 6px 4px 0;
+    text-align: center;
+}
+
+.pastedImageTitle {
+    font-size: 11px;
+    font-weight: 500;
+    color: #343a40;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pastedImageDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .noteContent {
+        margin-left: 16px;
+        padding: 10px 12px;
+    }
+
+    .timelineNode {
+        left: -22px;
+        width: 6px;
+        height: 6px;
+        top: 10px;
+    }
+
+    .noteInfoHeader {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .leftBadges {
+        gap: 2px;
+    }
+
+    .infoBadge {
+        padding: 2px 5px;
+        font-size: 10px;
+        height: 18px;
+    }
+
+    .rightSection {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .thumbnailContainer,
+    .iconContainer,
+    .attachmentHorizontalPreview {
+        height: 100px;
+    }
+
+    .imagePreview {
+        min-height: 100px;
+    }
+
+    .leftBadges {
+        flex-wrap: wrap;
+        row-gap: 4px;
+    }
+
+    .editHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .editTextarea {
+        min-height: 100px;
+        font-size: 13px;
+    }
+
+    .editFooter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    /* Responsive horizontal attachments */
+    .attachmentHorizontalItem {
+        width: 150px;
+    }
+
+    .attachmentsHorizontalGrid {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .attachmentHorizontalItem {
+        width: 130px;
+    }
+
+    .attachmentHorizontalPreview {
+        height: 90px;
+    }
+
+    .fileHorizontalIcon {
+        font-size: 36px;
+    }
+}
+
+/* Add to EditMode.module.css */
+.editContainer {
+    position: relative;
+    border: 2px dashed transparent;
+    transition: border-color 0.2s;
+    border-radius: 4px;
+}
+
+.dragActive {
+    border-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.dragOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 123, 255, 0.1);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.dragMessage {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 2px dashed #007bff;
+}
+
+.emojiPickerInline {
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.editModeContainer {
+    position: relative;
+    width: 100%;
+}

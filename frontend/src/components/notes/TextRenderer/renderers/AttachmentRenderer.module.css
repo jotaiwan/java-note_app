@@ -1,0 +1,28 @@
+/* AttachmentRenderer.module.css */
+
+.attachmentRenderer {
+    display: inline;
+}
+
+.attachmentLink {
+    color: #2563eb;
+    text-decoration: none;
+    border-bottom: 1px dashed #2563eb;
+    padding: 0 2px;
+    cursor: pointer;
+    font-family: monospace;
+    background-color: #f0f9ff;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.attachmentLink:hover {
+    background-color: #dbeafe;
+    border-bottom: 1px solid #2563eb;
+    text-decoration: none;
+}
+
+.attachmentLink:active {
+    background-color: #bfdbfe;
+    transform: translateY(1px);
+}

@@ -1,0 +1,173 @@
+/* frontend/src/pages/notes/components/Auth/Vault.css */
+.vault-container {
+    position: relative;
+    display: inline-block;
+}
+
+.vault-button-wrapper {
+    position: relative;
+}
+
+.vault-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.vault-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+.vault-button.loading {
+    opacity: 0.8;
+    cursor: wait;
+}
+
+.vault-button.copied {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.vault-icon {
+    display: inline-block;
+}
+
+.vault-icon.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tooltip Styles */
+.vault-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    z-index: 1000;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.tooltip-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.tooltip-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tooltip-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.tooltip-list {
+    list-style: none;
+    margin: 0;
+    padding: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tooltip-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 4px;
+}
+
+.tooltip-item:hover {
+    background-color: #f3f4f6;
+}
+
+.tooltip-item.active-item {
+    background-color: #e5e7eb;
+}
+
+.item-icon {
+    font-size: 20px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-label {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    color: #111827;
+    margin-bottom: 2px;
+}
+
+.item-command {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.copy-button:hover {
+    opacity: 1;
+    background-color: #e5e7eb;
+}
+
+.tooltip-footer {
+    padding: 12px 20px;
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    font-size: 11px;
+    color: #6b7280;
+    text-align: center;
+}

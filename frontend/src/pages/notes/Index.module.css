@@ -1,0 +1,193 @@
+/* frontend/src/pages/notes/Index.module.css */
+.page {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 0.5rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make content area scrollable */
+.contentArea {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    /* Important for nested scrolling */
+    position: relative;
+}
+
+/* Make summary sticky */
+.stickySummary {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2px;
+}
+
+/* Make NoteList scrollable */
+.scrollableList {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.loading {
+    text-align: center;
+    padding: 1.5rem;
+    color: #64748b;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem auto;
+    max-width: 600px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Remove or reduce container margins/padding that might be causing extra space */
+:global(.note-list-container) {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+:global(.note-row) {
+    margin-bottom: 0.5rem !important;
+}
+
+:global(.note-content) {
+    padding: 12px 16px !important;
+}
+
+/* Ensure scrolling works properly */
+.page>* {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+/* Optional: Add a min-height to ensure content doesn't get too small */
+.page> :global(.note-list) {
+    min-height: 400px;
+}
+
+/* Remove any extra whitespace from global styles */
+:global(body) {
+    margin: 0;
+    padding: 0;
+}
+
+:global(#root) {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page {
+        max-width: 95%;
+        padding: 0 0.25rem 0.5rem;
+    }
+
+    .loading {
+        padding: 1rem;
+    }
+
+    :global(.note-content) {
+        padding: 10px 12px !important;
+    }
+}
+
+@media (min-width: 1600px) {
+    .page {
+        max-width: 1600px;
+    }
+}
+
+/* Ensure NoteList container is scrollable */
+
+.searchStatus {
+    padding: 8px 12px;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-radius: 4px;
+    margin: 8px 0;
+    font-size: 14px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.searchError {
+    padding: 8px 12px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 4px;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.searchModeIndicator {
+    padding: 8px 12px;
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border-radius: 4px;
+    margin: 8px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clearSearchBtn {
+    background: none;
+    border: 1px solid #7b1fa2;
+    color: #7b1fa2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 8px;
+    transition: all 0.2s;
+}
+
+.clearSearchBtn:hover {
+    background-color: #7b1fa2;
+    color: white;
+}

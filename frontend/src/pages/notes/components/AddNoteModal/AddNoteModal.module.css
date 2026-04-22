@@ -1,0 +1,727 @@
+/* src/pages/notes/components/AddNoteModal/AddNoteModal.module.css */
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 40px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal Content */
+.modalContent {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+    position: relative;
+}
+
+/* Modal Header */
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 2px solid #e5e7eb;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.modalHeader h2 {
+    margin: 0;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Header Actions */
+.headerActions {
+    display: flex;
+    gap: 12px;
+}
+
+.headerCancelBtn,
+.headerSubmitBtn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    min-width: 100px;
+}
+
+.headerCancelBtn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.headerCancelBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.headerSubmitBtn {
+    background: white;
+    color: #667eea;
+    border: 2px solid white;
+}
+
+.headerSubmitBtn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.headerSubmitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Form Container */
+form {
+    padding: 20px 24px;
+}
+
+/* Compact Row Group */
+.compactRowGroup {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.compactRowItem {
+    flex: 1;
+    min-width: 0;
+}
+
+.compactRowItem label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+/* Input Styles */
+.compactInput {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+    height: 42px;
+}
+
+.compactInput:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.compactInput:hover {
+    border-color: #667eea;
+}
+
+/* Status Section */
+.compactStatusSection {
+    margin-bottom: 16px;
+}
+
+.statusHeader {
+    margin-bottom: 8px;
+}
+
+.latestStatusHint {
+    font-size: 0.85rem;
+    color: #6B7280;
+    font-style: italic;
+}
+
+.compactStatusButtons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.compactStatusButton {
+    flex: 1;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    background: white;
+    color: #374151;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.compactStatusButton:hover {
+    background: #f9fafb;
+    border-color: var(--status-color, #667eea);
+    transform: translateY(-1px);
+}
+
+.compactStatusButtonSelected {
+    background: var(--status-color, #667eea);
+    color: white;
+    border-color: var(--status-color, #667eea);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.compactStatusButtonSelected:hover {
+    background: var(--status-color, #667eea);
+    opacity: 0.9;
+}
+
+.statusIndicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.compactSelectedStatusInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.compactClearStatusButton {
+    padding: 4px 10px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.compactClearStatusButton:hover {
+    background: #dc2626;
+}
+
+/* Form Group */
+.compactFormGroup {
+    margin-bottom: 0;
+}
+
+/* Textarea Header */
+.textareaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.textareaHeader label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.imageHint {
+    font-size: 0.85rem;
+    color: #666;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+/* Upload Actions */
+.uploadActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.attachButton {
+    background: #f3f4f6;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #374151;
+}
+
+.attachButton:hover {
+    background: #e5e7eb;
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+.inlineEmojiPicker {
+    display: flex;
+    align-items: center;
+}
+
+/* Textarea */
+.dropHint {
+    position: relative;
+}
+
+.compactTextarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 300px;
+    line-height: 1.5;
+}
+
+.compactTextarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.textareaDragging {
+    border-color: #667eea !important;
+    background-color: rgba(102, 126, 234, 0.05) !important;
+}
+
+/* Drag Overlay */
+.dragOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(102, 126, 234, 0.2);
+    backdrop-filter: blur(4px);
+    border: 3px dashed #667eea;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.dragMessage {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #667eea;
+    border: 3px dashed #667eea;
+    pointer-events: none;
+}
+
+/* Image Previews */
+.imagePreviews {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.imagePreviewsHeader {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imagePreviewsTitle {
+    font-weight: 600;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.imagePreviewsSubtitle {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.imagePreviewsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.imagePreviewItem {
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.imagePreviewItem:hover {
+    transform: translateY(-2px);
+}
+
+.imagePreviewContainer {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    background: white;
+}
+
+.imagePreview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.imageBadge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 22px;
+    text-align: center;
+}
+
+.removeImageButton {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.removeImageButton:hover {
+    background: rgba(220, 53, 69, 0.9);
+}
+
+.imageInfo {
+    margin-top: 6px;
+    padding: 0 4px;
+}
+
+.imageTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.imageDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+.imageTime {
+    font-family: monospace;
+}
+
+.imageSize {
+    font-weight: 500;
+}
+
+.filename {
+    margin-top: 2px;
+    color: #adb5bd;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* File Attachments Preview */
+.attachmentsPreview {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.attachmentsHeader {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attachmentsTitle {
+    font-weight: 600;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.attachmentsSubtitle {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.attachmentsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.attachmentItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.attachmentItem:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attachmentIcon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    min-width: 32px;
+    text-align: center;
+}
+
+.attachmentInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.attachmentName {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #343a40;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.attachmentDetails {
+    display: flex;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+.fileType {
+    background: #e9ecef;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.removeAttachmentButton {
+    width: 22px;
+    height: 22px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.removeAttachmentButton:hover {
+    background: #dc2626;
+    opacity: 1;
+}
+
+.attachmentHelp {
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.8rem;
+    padding-top: 10px;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Total Attachments */
+.totalAttachments {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #dee2e6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modalOverlay {
+        padding: 20px;
+    }
+
+    .modalContent {
+        max-height: 95vh;
+    }
+
+    .modalHeader {
+        padding: 14px 20px;
+    }
+
+    .modalHeader h2 {
+        font-size: 1.5rem;
+    }
+
+    .headerActions {
+        gap: 8px;
+    }
+
+    .headerCancelBtn,
+    .headerSubmitBtn {
+        padding: 8px 16px;
+        min-width: 80px;
+        font-size: 0.9rem;
+    }
+
+    form {
+        padding: 16px;
+    }
+
+    .compactRowGroup {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .compactStatusButtons {
+        flex-direction: column;
+    }
+
+    .compactStatusButton {
+        min-width: 100%;
+    }
+
+    .compactSelectedStatusInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .textareaHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .imagePreviewsGrid,
+    .attachmentsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+
+    .dragMessage {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+}
+
+.loadingDot {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 14px;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

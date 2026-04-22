@@ -1,0 +1,165 @@
+// src/components/notes/NoteRow/hooks/useFileUpload.js
+import { useState, useEffect, useRef } from 'react';
+
+export function useFileUpload({ editedContent, setEditedContent, textareaRef }) {
+    const [newAttachments, setNewAttachments] = useState([]);
+    const [attachmentPreviews, setAttachmentPreviews] = useState([]);
+    const [isDragActive, setIsDragActive] = useState(false);
+
+    const fileInputRef = useRef(null);
+    const editContainerRef = useRef(null);
+
+    const handleDroppedFiles = (files) => {
+        files.forEach((file, index) => {
+            const displayName = file.name.replace(/\.[^/.]+$/, "");
+            const objectUrl = URL.createObjectURL(file);
+
+            const newAttachment = {
+                id: Date.now() + index + Math.random(),
+                file: file,
+                name: file.name,
+                displayName: displayName,
+                originalName: file.name,
+                size: Math.round(file.size / 1024),
+                type: file.type,
+                fileType: file.type,
+                url: objectUrl,
+                index: newAttachments.length + index + 1,
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+
+            setNewAttachments(prev => [...prev, newAttachment]);
+            setAttachmentPreviews(prev => [...prev, newAttachment]);
+
+            const placeholder = `[${file.name}] `;
+            insertTextAtCursor(placeholder);
+        });
+    };
+
+    const insertTextAtCursor = (text) => {
+        if (!textareaRef.current) return;
+
+        const textarea = textareaRef.current;
+        const cursorPos = textarea.selectionStart;
+        const textBefore = editedContent.substring(0, cursorPos);
+        const textAfter = editedContent.substring(cursorPos);
+
+        const newText = textBefore + text + textAfter;
+        setEditedContent(newText);
+
+        setTimeout(() => {
+            textarea.focus();
+            const newCursorPos = cursorPos + text.length;
+            textarea.setSelectionRange(newCursorPos, newCursorPos);
+        }, 10);
+    };
+
+    const handleFileSelect = (event) => {
+        const files = Array.from(event.target.files);
+        if (files.length > 0) {
+            handleDroppedFiles(files);
+        }
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    };
+
+    const handleFilePaste = (event) => {
+        const clipboardItems = event.clipboardData.items;
+        const files = [];
+
+        for (let i = 0; i < clipboardItems.length; i++) {
+            const item = clipboardItems[i];
+            if (item.kind === 'file') {
+                const file = item.getAsFile();
+                if (file) {
+                    files.push(file);
+                }
+            }
+        }
+
+        if (files.length > 0) {
+            event.preventDefault();
+            event.stopPropagation();
+            handleDroppedFiles(files);
+        }
+    };
+
+    const handleRemoveAttachment = (attachmentId) => {
+        const attachmentToRemove = attachmentPreviews.find(att => att.id === attachmentId);
+        if (!attachmentToRemove) return;
+
+        setNewAttachments(prev => prev.filter(att => att.id !== attachmentId));
+        setAttachmentPreviews(prev => prev.filter(att => att.id !== attachmentId));
+
+        const placeholder = `[${attachmentToRemove.originalName || attachmentToRemove.name}]`;
+        const updatedContent = editedContent.replace(new RegExp(placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '');
+        setEditedContent(updatedContent);
+
+        if (attachmentToRemove.url && attachmentToRemove.url.startsWith('blob:')) {
+            URL.revokeObjectURL(attachmentToRemove.url);
+        }
+    };
+
+    const clearAttachments = () => {
+        // Clean up all object URLs
+        attachmentPreviews.forEach(att => {
+            if (att.url && att.url.startsWith('blob:')) {
+                URL.revokeObjectURL(att.url);
+            }
+        });
+        setNewAttachments([]);
+        setAttachmentPreviews([]);
+    };
+
+    // Setup drag and drop handlers
+    useEffect(() => {
+        if (editContainerRef.current) {
+            const container = editContainerRef.current;
+
+            const handleDragOver = (e) => {
+                e.preventDefault();
+                setIsDragActive(true);
+            };
+
+            const handleDragLeave = (e) => {
+                e.preventDefault();
+                setIsDragActive(false);
+            };
+
+            const handleDrop = (e) => {
+                e.preventDefault();
+                setIsDragActive(false);
+
+                const files = Array.from(e.dataTransfer.files);
+                if (files.length > 0) {
+                    handleDroppedFiles(files);
+                }
+            };
+
+            container.addEventListener('dragover', handleDragOver);
+            container.addEventListener('dragleave', handleDragLeave);
+            container.addEventListener('drop', handleDrop);
+
+            return () => {
+                container.removeEventListener('dragover', handleDragOver);
+                container.removeEventListener('dragleave', handleDragLeave);
+                container.removeEventListener('drop', handleDrop);
+            };
+        }
+    }, []);
+
+    return {
+        newAttachments,
+        attachmentPreviews,
+        isDragActive,
+        setIsDragActive,
+        fileInputRef,
+        editContainerRef,
+        handleFileSelect,
+        handleFilePaste,
+        handleRemoveAttachment,
+        handleDroppedFiles,
+        clearAttachments
+    };
+}

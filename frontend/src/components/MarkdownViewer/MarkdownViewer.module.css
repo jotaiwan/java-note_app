@@ -1,0 +1,226 @@
+/* src/components/MarkdownViewer/MarkdownViewer.module.css */
+
+.languageSwitcher {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.languageSwitcher button {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.languageSwitcher button:hover {
+    background: #f0f0f0;
+}
+
+.languageSwitcher button.active {
+    background: #1976d2;
+    color: white;
+    border-color: #1976d2;
+}
+
+/* Welcome screen styles */
+.welcome {
+    text-align: center;
+    padding: 100px 20px;
+    color: #666;
+}
+
+.welcome h2 {
+    color: #1976d2;
+    margin-bottom: 20px;
+}
+
+/* Main content area */
+.content {
+    flex: 1;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    min-height: 100vh;
+    line-height: 1.8;
+    /* Increased line height for better readability */
+    color: #24292e;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* GitHub style Markdown - optimized version */
+.content h1 {
+    font-size: 2.2em;
+    border-bottom: 2px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin-top: 32px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.content h2 {
+    font-size: 1.8em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    margin-top: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.content h3 {
+    font-size: 1.5em;
+    margin-top: 24px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.content h4 {
+    font-size: 1.25em;
+    margin-top: 20px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.content p {
+    margin: 16px 0;
+    line-height: 1.8;
+}
+
+/* Code styles */
+.content code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-family: "SF Mono", Monaco, Consolas, "Liberation Mono", Courier, monospace;
+}
+
+.content pre {
+    background-color: #2d2d2d;
+    /* Dark background for code blocks */
+    color: #f8f8f2;
+    /* Light text for contrast */
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    /* Ensures monospace font */
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 20px 0;
+}
+
+.content pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 14px;
+}
+
+/* List styles */
+.content ul,
+.content ol {
+    padding-left: 2em;
+    margin: 16px 0;
+}
+
+.content li {
+    margin: 8px 0;
+    line-height: 1.8;
+}
+
+.content li>ul,
+.content li>ol {
+    margin: 4px 0;
+}
+
+/* Blockquote styles */
+.content blockquote {
+    padding: 12px 20px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+    background-color: #f8f9fa;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.content blockquote p {
+    margin: 8px 0;
+}
+
+/* Table styles */
+.content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    display: block;
+    overflow-x: auto;
+}
+
+.content th {
+    background-color: #f6f8fa;
+    font-weight: 600;
+    padding: 10px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.content td {
+    padding: 8px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.content tr:nth-child(2n) {
+    background-color: #f8f9fa;
+}
+
+/* Link styles */
+.content a {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* Image styles */
+.content img {
+    max-width: 100%;
+    box-sizing: content-box;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 24px 0;
+}
+
+/* Horizontal rule style - the <hr> you wanted */
+.content hr {
+    height: 3px;
+    padding: 0;
+    margin: 32px 0;
+    background: linear-gradient(to right, #e1e4e8, #0366d6, #e1e4e8);
+    border: 0;
+    opacity: 0.7;
+    border-radius: 3px;
+}
+
+/* Container spacing */
+.content>*:first-child {
+    margin-top: 0;
+}
+
+.content>*:last-child {
+    margin-bottom: 0;
+}

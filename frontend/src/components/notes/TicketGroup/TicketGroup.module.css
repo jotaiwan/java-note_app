@@ -1,0 +1,643 @@
+/* frontend/src/components/notes/TicketGroup/TicketGroup.module.css */
+
+/* Main container for each ticket group */
+.ticketGroup {
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.ticketGroup:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Recent update styling */
+.recentlyUpdated {
+    border-left: 4px solid #ff9800;
+    animation: pulseHighlight 2s ease-in-out;
+    position: relative;
+}
+
+.recentlyUpdated::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #ff9800, #ff5722);
+    border-radius: 2px;
+}
+
+@keyframes pulseHighlight {
+    0% {
+        background-color: rgba(255, 152, 0, 0.05);
+        border-left-color: #ff9800;
+    }
+
+    50% {
+        background-color: rgba(255, 152, 0, 0.15);
+        border-left-color: #ff5722;
+    }
+
+    100% {
+        background-color: rgba(255, 152, 0, 0.05);
+        border-left-color: #ff9800;
+    }
+}
+
+/* Last update badge */
+.lastUpdateBadge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-left: 8px;
+    white-space: nowrap;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.lastUpdateBadge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Ticket header - clickable area */
+.ticketHeader {
+    background-color: #f8f9fa;
+    padding: 18px 24px;
+    border-bottom: 2px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ticketHeader:hover {
+    background-color: #e9ecef;
+}
+
+/* Left section of header containing badge, buttons and stats */
+.ticketInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+/* Ticket ID badge - BIGGER version and now a link */
+.ticketBadge {
+    background-color: #0052cc;
+    color: white;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    line-height: 1.5;
+    box-shadow: 0 2px 6px rgba(0, 82, 204, 0.3);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ticketBadge:hover {
+    background-color: #003d99;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.4);
+}
+
+/* Container for action buttons (copy and add only) */
+.ticketActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+}
+
+/* Base style for action buttons */
+.actionButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 8px;
+    color: #6b778c;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.actionButton:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Copy button specific style */
+.copyButton:hover {
+    color: #0052cc;
+}
+
+.copyButton.copied {
+    color: #006644;
+    background-color: #e3fcef;
+}
+
+/* Jira button is hidden - functionality moved to ticket badge */
+.jiraButton {
+    display: none;
+}
+
+/* Add button specific style */
+.addButton {
+    color: #28a745;
+}
+
+.addButton:hover {
+    color: #218838;
+    background-color: #e8f5e9;
+}
+
+/* Stats item (shows note count) */
+.ticketStats {
+    display: flex;
+    align-items: center;
+}
+
+.statsItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    color: #44546f;
+    background: #f0f5ff;
+    padding: 8px 16px;
+    border-radius: 30px;
+}
+
+.statsIcon {
+    font-size: 16px;
+}
+
+.statsNumber {
+    font-weight: 700;
+    color: #0052cc;
+    font-size: 18px;
+}
+
+/* Expand/collapse icon */
+.expandIcon {
+    margin-left: 8px;
+    color: #6c757d;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* Subject style */
+.ticketSubject {
+    color: #2d3748;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 8px;
+    flex: 1;
+    min-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.5;
+}
+
+/* Notes list container */
+.notesList {
+    padding: 24px;
+    position: relative;
+}
+
+/* Timeline line */
+.timeline {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+/* Collapsed state preview */
+.collapsedPreview {
+    padding: 20px 24px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.previewContent {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.previewIcon {
+    font-size: 16px;
+    margin-right: 8px;
+    color: #6b778c;
+}
+
+.previewText {
+    color: #44546f;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.latestPreview {
+    color: #626f86;
+    font-size: 13px;
+    padding: 8px 0 8px 20px;
+    border-left: 3px solid #0052cc;
+    background-color: #ffffff;
+    border-radius: 0 4px 4px 0;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Info badge styles */
+.infoBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    height: 32px;
+}
+
+.dateBadge {
+    background: #fff3bf;
+    border-color: #ffe066;
+    color: #e67700;
+}
+
+.spacer {
+    margin-left: 8px;
+    display: inline-block;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Show more button container */
+.showMoreContainer {
+    padding: 20px 24px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+}
+
+.showMoreButton {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #44546f;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.showMoreButton:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    color: #0052cc;
+}
+
+/* Ticket footer */
+.ticketFooter {
+    background-color: #f8f9fa;
+    padding: 16px 24px 16px 44px;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.lastUpdated {
+    color: #626f86;
+}
+
+/* Footer controls container */
+.footerControls {
+    display: flex;
+    gap: 12px;
+}
+
+/* Go to top button */
+.goToTopButton {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    color: #44546f;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.goToTopButton:hover {
+    background: #0052cc;
+    color: white;
+    border-color: #0052cc;
+}
+
+/* Collapse button */
+.collapseButton {
+    background: #e9ecef;
+    border: 1px solid #dee2e6;
+    color: #44546f;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.collapseButton:hover {
+    background: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+
+/* Status badge styling */
+.statusBadge {
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.statusOpen {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.statusInProgress,
+.statusProcessing {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.statusClosed {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.statusPending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Status dropdown styles */
+.statusDropdownContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.statusButton {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.statusButton.updating {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.clickableStatus {
+    transition: opacity 0.2s ease;
+}
+
+.clickableStatus:hover {
+    opacity: 0.8;
+}
+
+.dropdownArrow {
+    font-size: 10px;
+    color: #666;
+    margin-left: 2px;
+}
+
+.statusDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 700px;
+    animation: slideDown 0.2s ease;
+}
+
+.statusDropdownHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 600;
+    color: #333;
+}
+
+.closeDropdown {
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #999;
+    padding: 0 4px;
+}
+
+.closeDropdown:hover {
+    color: #666;
+}
+
+.statusDropdownContent {
+    padding: 16px;
+}
+
+/* Single row status buttons */
+.statusRow {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.rowStatusButton {
+    padding: 8px 16px;
+    border: 1px solid var(--status-color);
+    background-color: white;
+    color: var(--status-color);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.rowStatusButton:hover {
+    background-color: var(--status-color);
+    color: white;
+}
+
+.rowStatusButton.active {
+    background-color: var(--status-color);
+    color: white;
+}
+
+.rowStatusButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Hide scrollbar but keep functionality */
+.statusRow::-webkit-scrollbar {
+    height: 4px;
+}
+
+.statusRow::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.statusRow::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.statusRow::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .ticketHeader {
+        padding: 14px 16px;
+    }
+
+    .ticketBadge {
+        padding: 6px 18px;
+        font-size: 15px;
+    }
+
+    .actionButton {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    .statsItem {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .statsNumber {
+        font-size: 16px;
+    }
+
+    .lastUpdateBadge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+        margin-left: 4px;
+    }
+
+    .ticketInfo {
+        gap: 8px;
+    }
+
+    .collapsedPreview {
+        padding: 16px;
+    }
+
+    .previewContent {
+        margin-left: 12px;
+    }
+
+    .latestPreview {
+        padding-left: 12px;
+    }
+
+    .ticketFooter {
+        padding: 12px 16px 12px 36px;
+    }
+
+    .statusDropdown {
+        min-width: 90vw;
+        right: -50px;
+    }
+
+    .statusRow {
+        gap: 6px;
+    }
+
+    .rowStatusButton {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,121 @@
+/* frontend/src/styles/globals.css */
+
+/* 重置和基礎樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* 工具類 */
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-12 {
+    gap: 12px;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* 加載動畫 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* 錯誤訊息 */
+.error-container {
+    padding: 30px;
+    background-color: #ffe6e6;
+    border: 1px solid #ff9999;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.error-title {
+    color: #cc0000;
+    margin-bottom: 15px;
+}
+
+.error-details {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    overflow: auto;
+    font-size: 0.9em;
+    margin: 15px 0;
+    font-family: monospace;
+}
+
+.refresh-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.refresh-button:hover {
+    background-color: #2980b9;
+}

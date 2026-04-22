@@ -1,0 +1,36 @@
+/* frontend/src/components/notes/TextRenderer/renderers/LineBreakRenderer.module.css */
+.lineBreakContainer {
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.lineBreakContainer p {
+    margin: 8px 0;
+    padding: 2px 0;
+    min-height: 1em;
+    /* Ensure empty paragraphs have height */
+}
+
+.lineBreakContainer p:first-child {
+    margin-top: 0;
+}
+
+.lineBreakContainer p:last-child {
+    margin-bottom: 0;
+}
+
+.lineBreakContainer br {
+    line-height: 1.6;
+    display: block;
+    content: "";
+    margin-top: 4px;
+}
+
+.error {
+    color: #dc2626;
+    background-color: #fef2f2;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #fca5a5;
+    font-size: 13px;
+}

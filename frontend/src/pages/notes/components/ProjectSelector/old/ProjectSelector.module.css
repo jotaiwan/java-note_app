@@ -1,0 +1,313 @@
+/* Container */
+.container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #e9ecef;
+}
+
+/* Menu variant */
+.menuVariant {
+    background: white;
+    border-color: #dee2e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+}
+
+/* Environment Row - with flex layout */
+.environmentRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 16px;
+}
+
+/* Environments List */
+.environmentsList {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* Environment Button */
+.envButton {
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 16px;
+    background: white;
+    color: #495057;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    white-space: nowrap;
+}
+
+.envButton:hover {
+    background: #f1f3f5;
+    border-color: #adb5bd;
+    color: #212529;
+    transform: translateY(-1px);
+}
+
+.envButtonActive {
+    background: #339af0 !important;
+    border-color: #339af0 !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.menuVariant .envButton {
+    padding: 4px 10px;
+    font-size: 11px;
+    min-width: 50px;
+}
+
+/* Current Selection - Right aligned */
+.currentSelection {
+    flex-shrink: 0;
+}
+
+.currentBadge {
+    display: inline-flex;
+    align-items: center;
+    background: #e9ecef;
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    white-space: nowrap;
+}
+
+.currentEnv {
+    color: #339af0;
+    font-weight: 600;
+}
+
+.currentSeparator {
+    margin: 0 4px;
+    color: #adb5bd;
+    font-weight: 300;
+}
+
+.currentProject {
+    color: var(--project-color, #38b2ac);
+    font-weight: 600;
+}
+
+.menuVariant .currentBadge {
+    background: #f8f9fa;
+    font-size: 10px;
+    padding: 3px 8px;
+}
+
+/* Projects Row */
+.projectsRow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+/* Project Button */
+.projectButton {
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 16px;
+    background: white;
+    color: #495057;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 70px;
+    white-space: nowrap;
+}
+
+.projectButton:hover {
+    background: #f1f3f5;
+    border-color: var(--project-color, #adb5bd);
+    color: #212529;
+    transform: translateY(-1px);
+}
+
+.projectButtonActive {
+    background: var(--project-color, #38b2ac) !important;
+    border-color: var(--project-color, #38b2ac) !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+.menuVariant .projectButton {
+    padding: 4px 10px;
+    font-size: 11px;
+    min-width: 60px;
+}
+
+/* Project Icon */
+.projectIcon {
+    font-size: 12px;
+}
+
+.menuVariant .projectIcon {
+    font-size: 11px;
+}
+
+.projectText {
+    white-space: nowrap;
+}
+
+/* Separator */
+.separator {
+    color: #adb5bd;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0 2px;
+    opacity: 0.5;
+    user-select: none;
+}
+
+/* Separator Line */
+.separatorLine {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #dee2e6, transparent);
+    margin: 8px 0;
+    width: 100%;
+}
+
+/* Tooltips */
+.envButton:hover::after,
+.projectButton:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 6px;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 0.2s ease forwards;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.envButton:hover::after {
+    min-width: 80px;
+}
+
+.projectButton:hover::after {
+    min-width: 120px;
+    white-space: normal;
+    text-align: center;
+}
+
+.menuVariant .envButton:hover::after,
+.menuVariant .projectButton:hover::after {
+    background: #2d3748;
+    color: white;
+}
+
+/* Ensure proper positioning for tooltips */
+.envButton,
+.projectButton {
+    position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .environmentRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .environmentsList,
+    .projectsRow {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .currentSelection {
+        align-self: flex-start;
+    }
+
+    .envButton,
+    .projectButton {
+        padding: 4px 10px;
+        font-size: 11px;
+        min-width: 55px;
+    }
+
+    .separator {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .menuVariant {
+        padding: 10px;
+    }
+}
+
+/* Compact variant for very tight spaces */
+@media (max-width: 480px) {
+
+    .environmentRow,
+    .projectsRow {
+        gap: 2px;
+    }
+
+    .envButton,
+    .projectButton {
+        padding: 3px 8px;
+        font-size: 10px;
+        min-width: 45px;
+    }
+
+    .projectIcon {
+        font-size: 10px;
+    }
+
+    .separator {
+        font-size: 11px;
+        padding: 0 1px;
+    }
+
+    .currentBadge {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+}

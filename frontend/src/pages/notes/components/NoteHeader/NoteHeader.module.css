@@ -1,0 +1,625 @@
+/* ============ 主要容器样式 ============ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    /* CHANGED: from 1rem to 0.75rem */
+}
+
+.searchSection {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    /* CHANGED: from 0.75rem to 0.25rem - brings menu button closer to search box */
+    flex: 1;
+    min-width: auto;
+    position: relative;
+}
+
+/* ============ STOCK TICKER STYLES ============ */
+.stockTickerContainer {
+    margin: 0 4px;
+    /* CHANGED: from 6px to 4px */
+    /* flex: 1; */
+    /* max-width: 500px; */
+    /* min-width: 300px; */
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+/* ============ 搜索框样式 ============ */
+.form {
+    flex: 1;
+    min-width: auto;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-left: 0;
+    /* ADDED: remove left margin */
+}
+
+.searchContainer:focus-within {
+    border-color: #4dabf7;
+    box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+}
+
+.input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    min-width: 0;
+    background: transparent;
+}
+
+.input::placeholder {
+    color: #6c757d;
+}
+
+.buttons {
+    display: flex;
+    gap: 4px;
+    padding-right: 8px;
+}
+
+.searchBtn,
+.clearBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBtn:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+}
+
+.clearBtn:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+    transform: scale(1.05);
+}
+
+/* ============ Tech stack badges ============ */
+.techBadges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.techBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.85;
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    .techBadges {
+        display: none;
+    }
+}
+
+/* ============ 右侧按钮组样式 ============ */
+.rightButtons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.emojiButtonWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.importButton,
+.addButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.importButton {
+    background: #e9ecef;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.importButton:hover:not(:disabled) {
+    background: #dee2e6;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.importButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.addButton {
+    background: #0d6efd;
+    color: white;
+    border: 1px solid #0b5ed7;
+}
+
+.addButton:hover {
+    background: #0b5ed7;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* ============ 文件上传区域样式 ============ */
+.fileSelection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #0d6efd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.fileName {
+    flex: 1;
+    font-size: 14px;
+    color: #495057;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fileActions {
+    display: flex;
+    gap: 8px;
+}
+
+.generateBtn {
+    padding: 0.5rem 1rem;
+    background: #198754;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.generateBtn:hover:not(:disabled) {
+    background: #157347;
+}
+
+.generateBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cancelBtn {
+    padding: 0.5rem 1rem;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.cancelBtn:hover:not(:disabled) {
+    background: #5a6268;
+}
+
+.cancelBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============ 菜单按钮样式 ============ */
+.menuContainer {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.menuButton {
+    background: none;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #666;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin-right: -2px;
+    /* CHANGED: from -4px to -2px */
+    /* ADDED: Pulls menu button closer to search box */
+    flex-shrink: 0;
+}
+
+.menuButton:hover {
+    background-color: #f5f5f5;
+    color: #333;
+    border-color: #999;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menuButtonHover {
+    background-color: #f0f8ff !important;
+    border-color: #4dabf7 !important;
+    color: #1971c2 !important;
+}
+
+.menuButton.active {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    color: #2196f3;
+}
+
+/* 悬停和点击指示器 */
+.hoverIndicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #4dabf7;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.clickIndicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #fa5252;
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+.menuIcon {
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* ============ 下拉菜单样式 ============ */
+.menuDropdownPortal {
+    position: absolute;
+    z-index: 9999;
+    top: 100%;
+    left: -8px;
+    /* CHANGED: from left: 0 to left: -8px - aligns dropdown with button */
+    margin-top: 5px;
+}
+
+.menuDropdown {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    animation: slideDown 0.2s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menuHeader {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuHeader h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.menuStatus {
+    font-size: 0.7rem;
+    color: #666;
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.menuItems {
+    padding: 0.5rem;
+}
+
+.menuItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #333;
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menuItem:hover {
+    background-color: #f8f9fa;
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.menuItem:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #4dabf7;
+    border-radius: 0 3px 3px 0;
+}
+
+.menuItem:hover .menuItemIcon {
+    transform: scale(1.1);
+}
+
+.menuItemIcon {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.menuDivider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #f0f0f0, transparent);
+    margin: 0.5rem 1rem;
+}
+
+/* ============ 响应式设计 ============ */
+@media (max-width: 1200px) {
+    .stockTickerContainer {
+        max-width: 400px;
+        min-width: 250px;
+        margin: 0 4px;
+        /* ADDED: keep 4px margin */
+    }
+
+    .form {
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .stockTickerContainer {
+        max-width: 300px;
+        min-width: 200px;
+        margin: 0 4px;
+        /* CHANGED: from 8px to 4px */
+    }
+
+    /* .form {
+        min-width: 200px;
+    } */
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        /* ADDED: reduce gap */
+    }
+
+    .searchSection {
+        min-width: 100%;
+        order: 1;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        /* KEEP: small gap */
+    }
+
+    .stockTickerContainer {
+        order: 2;
+        min-width: 100%;
+        max-width: 100%;
+        margin: 0 0 0.25rem 0;
+        /* CHANGED: remove side margins, add bottom margin */
+        height: 40px;
+    }
+
+    .form {
+        order: 3;
+        min-width: 100%;
+    }
+
+    .fileSelection {
+        order: 4;
+        min-width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .fileName {
+        text-align: center;
+    }
+
+    .rightButtons {
+        order: 5;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .menuDropdownPortal {
+        left: 0 !important;
+        right: 0;
+        margin-left: 0;
+    }
+
+    .menuDropdown {
+        min-width: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .stockTickerContainer {
+        display: none;
+        /* Hide stock ticker on very small screens */
+    }
+
+    .searchSection {
+        gap: 0.25rem;
+    }
+
+    .form {
+        min-width: 100%;
+    }
+}
+
+.shortcutCommandsSection {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #f8f9fa;
+}
+
+/* Make menu dropdown wider to fit ShortcutCommands */
+.menuDropdown {
+    min-width: 300px;
+    /* Increased from 220px */
+}
+
+.projectSelectorWrapper {
+    margin: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+/* Make menu wider to accommodate ProjectSelector */
+.menuDropdown {
+    min-width: 280px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .projectSelectorWrapper {
+        padding: 8px;
+        margin: 8px;
+    }
+
+    .menuDropdown {
+        min-width: 250px;
+    }
+}
+
+/* Add to NoteHeader.module.css */
+.copyBtn {
+    padding: 0.5rem;
+    background: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.copyBtn:hover {
+    background: #5a32a3;
+}
+
+.copyBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

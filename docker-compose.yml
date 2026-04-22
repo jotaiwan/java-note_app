@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: note_backend
+    network_mode: host
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DEV: "false"
+      SERVER_PORT: 5099  # 添加这一行，覆盖配置文件中的端口
+      DB_URL: ${DB_URL:-jdbc:postgresql://localhost:5432/note}
+      DB_USER: ${DB_USER:-dev}
+      DB_PASSWORD: ${DB_PASSWORD:-dev}
+      SITES_CONFIGURATION_CREDENTIALS: /app/configs/sites/credentials.json
+    volumes:
+      - ./docs:/app/docs
+      - ./src:/app/src
+      - ./pom.xml:/app/pom.xml
+      - ${HOME}/room/configs/sites:/app/configs/sites:ro
+    restart: unless-stopped
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    container_name: note_nginx
+    network_mode: host
+    depends_on:
+      - backend
+    restart: unless-stopped

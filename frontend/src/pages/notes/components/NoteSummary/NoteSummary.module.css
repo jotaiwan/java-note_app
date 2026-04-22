@@ -1,0 +1,467 @@
+/* frontend/src/pages/notes/components/NoteSummary/NoteSummary.module.css - Control panel styles */
+
+.summaryContainer {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2px;
+    padding: 12px 16px;
+}
+
+/* Control bar */
+.controlBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Date filter container */
+.dateFilterContainer {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    flex: 0 0 auto;
+}
+
+.dateFilterGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.dateFilterLabel {
+    font-size: 0.85em;
+    color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dateFilterSelect {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 0.85em;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    min-width: 140px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dateFilterSelect:hover:not(:disabled) {
+    border-color: #aaa;
+}
+
+.dateFilterSelect:focus {
+    border-color: #339af0;
+    box-shadow: 0 0 0 2px rgba(51, 154, 240, 0.2);
+}
+
+.dateFilterSelect:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Filter loading indicator */
+.filterLoadingIndicator {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.loadingDot {
+    font-size: 0.8em;
+    color: #339af0;
+    animation: pulse 1.5s infinite;
+}
+
+.loadingDot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loadingDot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Sort container */
+.sortContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.sortGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.sortLabel {
+    font-size: 0.85em;
+    color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sortSelect {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 0.85em;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    min-width: 120px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sortSelect:hover:not(:disabled) {
+    border-color: #aaa;
+}
+
+.sortSelect:focus {
+    border-color: #339af0;
+    box-shadow: 0 0 0 2px rgba(51, 154, 240, 0.2);
+}
+
+/* Sort direction button */
+.sortDirectionBtn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.sortDirectionBtn:hover:not(:disabled) {
+    background: #f5f5f5;
+    border-color: #aaa;
+}
+
+/* NEW: Clear button between arrow and status */
+.sortClearBtn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ffcdd2;
+    background: #fff0f0;
+    color: #d32f2f;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.sortClearBtn:hover {
+    background: #ffe0e0;
+    border-color: #d32f2f;
+    color: #b71c1c;
+}
+
+/* Filter badge on sort button */
+.filterBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #339af0;
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+}
+
+.filterActive {
+    border-color: #339af0;
+    background: #f0f9ff;
+}
+
+/* Inline sort info */
+.sortInfoInline {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Status legend */
+.statusLegend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #eaeaea;
+    font-size: 0.75em;
+}
+
+.statusLegendItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: #666;
+}
+
+.statusIcon {
+    font-size: 0.9em;
+}
+
+/* Checkbox styles */
+.statusCheckbox {
+    margin: 0 4px 0 0;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+}
+
+.statusLabel {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    line-height: 1;
+}
+
+/* Arrow */
+.arrow {
+    color: #aaa;
+    margin: 0 4px;
+    font-weight: bold;
+}
+
+/* Sort hint */
+.sortHint {
+    font-size: 0.8em;
+    color: #339af0;
+    background: #f0f9ff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #d0e3ff;
+    font-weight: 500;
+}
+
+/* Statistics bar */
+.statsBar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f9fa;
+    padding: 6px 10px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.statIcon {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.statValue {
+    font-size: 0.9em;
+    color: #222;
+    font-weight: 700;
+    min-width: 16px;
+    text-align: center;
+}
+
+.statDivider {
+    width: 1px;
+    height: 16px;
+    background: #ddd;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .statusLegend {
+        gap: 2px;
+        padding: 3px 6px;
+    }
+
+    .arrow {
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .controlBar {
+        gap: 12px;
+    }
+
+    .dateFilterGroup {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .sortGroup {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .sortInfoInline {
+        margin-left: 0;
+        margin-top: 4px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .controlBar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .dateFilterGroup {
+        justify-content: center;
+    }
+
+    .sortGroup {
+        justify-content: center;
+    }
+
+    .statsBar {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .statusLegend {
+        font-size: 0.7em;
+        padding: 2px 4px;
+    }
+
+    .sortHint {
+        font-size: 0.75em;
+        padding: 2px 6px;
+    }
+}
+
+.searchHistoryRow {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+}
+
+.searchHistoryLabel {
+    color: #666;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.searchHistoryItems {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.searchHistoryItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.searchHistoryTerm {
+    background: none;
+    border: none;
+    color: #0066cc;
+    cursor: pointer;
+    padding: 2px 0;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.searchHistoryTerm:hover {
+    color: #004999;
+}
+
+.searchHistoryRemove {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.searchHistoryRemove:hover {
+    color: #dc3545;
+    background: #f8f8f8;
+}
+
+.searchHistoryCount {
+    color: #999;
+    font-size: 11px;
+    margin-left: 4px;
+}
+
+.searchHistoryClearAll {
+    background: none;
+    border: 1px solid #ddd;
+    color: #666;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+.searchHistoryClearAll:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+    color: #333;
+}

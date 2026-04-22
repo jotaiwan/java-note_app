@@ -1,0 +1,393 @@
+/* src/components/notes/NoteRow/components/EditMode/EditMode.module.css */
+
+.editMode {
+    position: relative;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.dragActive {
+    background-color: #e3f2fd;
+    border: 2px dashed #2196f3;
+}
+
+.dragOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(33, 150, 243, 0.1);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.dragMessage {
+    background-color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    font-weight: 500;
+    color: #1976d2;
+    border: 2px solid #2196f3;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.editHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.textareaHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.editLabel {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.emojiPickerInline {
+    position: relative;
+    z-index: 10;
+}
+
+.editActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.attachButton {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.attachButton:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+}
+
+.imageHint {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+/* DateTimePicker styles for EditMode */
+.textareaHeader :global(.customDateTimeContainer) {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+}
+
+.textareaHeader :global(.compactDateTimeInput) {
+    width: 200px;
+    font-size: 0.9em;
+    color: #666;
+    background-color: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+.textareaHeader :global(.compactDateTimeInput):focus {
+    border-color: #007bff;
+    background-color: white;
+}
+
+.textareaHeader :global(.compactDateTimeInput):disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.textareaHeader :global(.hiddenDateTimeInput) {
+    position: absolute;
+}
+
+/* Edit date span (when not in edit mode) */
+.editDate {
+    font-size: 0.9em;
+    color: #666;
+    background-color: #f5f5f5;
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    white-space: nowrap;
+    font-family: monospace;
+}
+
+/* ===== AUTO-RESIZE TEXTAREA STYLES ===== */
+.editTextarea {
+    width: 100%;
+    padding: 20px 20px;
+    border: none;
+    background-color: #f8f9fa;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 2.2;
+    resize: none;
+    outline: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 100px;
+    max-height: 600px;
+    height: auto;
+}
+
+.editTextarea:focus {
+    background-color: white;
+}
+
+/* Preview section styling */
+.previewSection {
+    padding: 12px 16px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Override FilePreview styles */
+.previewSection :global(.filePreviewContainer) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 0;
+}
+
+.previewSection :global(.filePreviewItem) {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.previewSection :global(.filePreviewImage) {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    background-color: #fff;
+}
+
+.previewSection :global(.filePreviewIcon) {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background-color: #e3f2fd;
+}
+
+.previewSection :global(.filePreviewName) {
+    padding: 4px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid #e0e0e0;
+}
+
+.previewSection :global(.filePreviewRemove) {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.2s;
+    z-index: 5;
+}
+
+.previewSection :global(.filePreviewRemove:hover) {
+    background-color: #ff4444;
+    color: white;
+    border-color: #ff4444;
+}
+
+/* Bottom Action Bar - Matching header styles */
+.editActionBar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 16px 20px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.editActionButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    min-width: 70px;
+    height: 32px;
+}
+
+/* Cancel button - matches header cancel button */
+.cancelButton {
+    background: #6c757d;
+    border-color: #545b62;
+    color: white;
+}
+
+.cancelButton:hover:not(:disabled) {
+    background: #545b62;
+}
+
+.cancelButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Save button - success green color */
+.saveButton {
+    background: #28a745;
+    border-color: #218838;
+    color: white;
+}
+
+.saveButton:hover:not(:disabled) {
+    background: #218838;
+}
+
+.saveButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.editFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    font-size: 12px;
+    color: #666;
+}
+
+.charCount {
+    color: #999;
+}
+
+.updatingIndicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2196f3;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e3f2fd;
+    border-top-color: #2196f3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .imageHint {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .textareaHeader :global(.compactDateTimeInput) {
+        width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .editHeader {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .textareaHeader {
+        flex-wrap: wrap;
+    }
+
+    .editActions {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

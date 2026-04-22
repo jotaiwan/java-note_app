@@ -1,0 +1,104 @@
+/* frontend/src/components/notes/TextRenderer/renderers/LinkRenderer.module.css */
+/**
+ * Styles for LinkRenderer component
+ * These styles are specifically for URL links
+ */
+
+/* URL link styling */
+.urlLink {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: 1px solid #cce5ff;
+    padding: 0 1px;
+    transition: all 0.2s ease;
+    word-break: break-all;
+    position: relative;
+}
+
+.urlLink:hover {
+    color: #004d99;
+    border-bottom-color: #004d99;
+    background-color: #f0f7ff;
+}
+
+.urlLink:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.urlLink:active {
+    color: #003366;
+    transform: translateY(1px);
+}
+
+/* External link indicator */
+.urlLink[target="_blank"]::after {
+    content: "↗";
+    font-size: 0.8em;
+    margin-left: 2px;
+    opacity: 0.7;
+    display: inline-block;
+    transform: translateY(-1px);
+}
+
+/* Long URL handling */
+.longUrl {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+
+/* Error states */
+.error {
+    color: #dc2626;
+    background-color: #fef2f2;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #fca5a5;
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.error strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.errorContext {
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+    color: #475569;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.codeBlock {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 12px 0;
+    border-left: 4px solid #10b981;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+    color: #9ca3af;
+    background-color: #f3f4f6;
+    padding: 0 2px;
+    border-radius: 2px;
+}

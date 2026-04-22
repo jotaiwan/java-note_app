@@ -1,0 +1,74 @@
+/* StatusButtons.module.css */
+.statusContainer {
+    margin-bottom: 20px;
+}
+
+.statusLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.statusButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.statusButton {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    min-width: 100px;
+}
+
+.statusButton:hover:not(:disabled) {
+    opacity: 0.8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.statusButton.selected {
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.statusButton:disabled {
+    opacity: 0.7;
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+}
+
+.statusInfo {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: #e7f5ff;
+    border: 1px solid #74c0fc;
+    border-radius: 4px;
+    color: #1864ab;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .statusButtons {
+        gap: 8px;
+    }
+
+    .statusButton {
+        padding: 6px 12px;
+        font-size: 13px;
+        min-width: 80px;
+    }
+}

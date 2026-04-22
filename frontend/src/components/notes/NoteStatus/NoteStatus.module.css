@@ -1,0 +1,61 @@
+/* frontend/src/components/notes/NoteStatus/NoteStatus.module.css */
+
+/* Base badge */
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Slightly more gap for FA icons */
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid;
+    transition: all 0.2s ease;
+}
+
+/* Font Awesome icons need a container */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+/* Size variations */
+.small {
+    padding: 2px 6px;
+    font-size: 0.75em;
+    gap: 6px;
+}
+
+.medium {
+    padding: 4px 10px;
+    font-size: 0.85em;
+    gap: 8px;
+}
+
+.large {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    gap: 10px;
+    font-weight: 600;
+}
+
+/* Text styling */
+.text {
+    white-space: nowrap;
+}
+
+/* Inline display (without badge) */
+.statusInline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Hover effects */
+.statusBadge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
