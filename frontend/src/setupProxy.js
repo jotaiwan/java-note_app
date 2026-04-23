@@ -3,8 +3,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function (app) {
     const isDocker = process.env.REACT_APP_IN_DOCKER === 'true';
     const target = isDocker
-        ? (process.env.REACT_APP_PROXY_TARGET_DOCKER || 'http://localhost:5000')
-        : (process.env.REACT_APP_PROXY_TARGET_LOCAL || 'http://localhost:5000');
+        ? (process.env.REACT_APP_PROXY_TARGET_DOCKER || 'http://localhost:5099')
+        : (process.env.REACT_APP_PROXY_TARGET_LOCAL || 'http://localhost:5099');
     const mode = isDocker ? 'DOCKER_CONTAINER' : 'LOCAL_DEVELOPMENT';
 
     app.use('/api', createProxyMiddleware({
@@ -21,7 +21,7 @@ module.exports = function (app) {
                 mode,
                 suggestion: isDocker
                     ? 'Make sure Docker backend is running'
-                    : 'Make sure local backend is running on port 5000'
+                    : 'Make sure local backend is running on port 5099'
             }));
         }
     }));

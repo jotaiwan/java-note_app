@@ -62,8 +62,8 @@ nginx     reverse proxy     port 5000   network_mode: host
 | Speed | Fast | Slower (build) |
 | Needs Java + Node locally | ✅ | ❌ |
 | Production-like | ❌ | ✅ |
-| **App URL** | http://localhost:5099 | http://localhost:5099 |
-| **API URL** | http://localhost:5000 | http://localhost:5000 |
+| **App URL** | http://localhost:5000 | http://localhost:5000 |
+| **API URL** | http://localhost:5099 | http://localhost:5099 |
 | **Use for** | Daily coding | Integration testing |
 
 ---
@@ -109,7 +109,7 @@ Output JAR: `target/note-app-*.jar`
 cd frontend
 npm install        # install dependencies
 npm run build      # production build → frontend/build/
-npm start          # dev server (React, served via nginx on port 5099)
+npm start          # dev server (React, on port 5000)
 ```
 
 ---
