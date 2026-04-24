@@ -8,10 +8,10 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: docker
       DEV: "false"
-      SERVER_PORT: 5099  # 添加这一行，覆盖配置文件中的端口
-      DB_URL: ${DB_URL:-jdbc:postgresql://localhost:5432/note}
-      DB_USER: ${DB_USER:-dev}
-      DB_PASSWORD: ${DB_PASSWORD:-dev}
+      SERVER_PORT: 5099
+      DB_URL: ${NOTE_APP_JDBC_DB_URL:-jdbc:postgresql://localhost:5432/note}
+      DB_USER: ${NOTE_APP_JDBC_DB_USER}
+      DB_PASSWORD: ${NOTE_APP_JDBC_DB_PASSWORD}
       SITES_CONFIGURATION_CREDENTIALS: /app/configs/sites/credentials.json
     volumes:
       - ./docs:/app/docs

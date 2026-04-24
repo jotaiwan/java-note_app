@@ -18,7 +18,7 @@ public class CredentialReader {
 
     // Resolved from env var SITES_CONFIGURATION_CREDENTIALS (set in ~/.bashrc and forwarded by docker-compose).
     // Falls back to the explicit path if the env var is not set.
-    @Value("${app.credential-file:${user.home}/room/configs/sites/credentials.json}")
+    @Value("${note.app.credential-file:${user.home}/room/configs/sites/credentials.json}")
     private String credentialFilePath;
 
     private JsonNode cachedCredentials;

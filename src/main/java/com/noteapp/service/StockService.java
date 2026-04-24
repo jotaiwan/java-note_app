@@ -68,6 +68,7 @@ public class StockService {
                     .GET()
                     .build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            log.debug("Finnhub response for {}: HTTP {} body={}", symbol, response.statusCode(), response.body());
             JsonNode json = MAPPER.readTree(response.body());
 
             Map<String, Object> result = new LinkedHashMap<>();
@@ -87,8 +88,7 @@ public class StockService {
                     "change", String.format("%.2f", change),
                     "change_percent", String.format("%.2f%%", changePct),
                     "opening", json.path("o").asDouble(),
-                    "latest_close", current
-            ));
+                    "latest_close", current));
             return result;
         } catch (Exception e) {
             throw new RuntimeException("Finnhub API error for " + symbol + ": " + e.getMessage(), e);
@@ -171,17 +171,14 @@ public class StockService {
                     "change", String.format("%.2f", change),
                     "change_percent", String.format("%.2f%%", changePct),
                     "opening", open,
-                    "latest_close", close
-            ));
+                    "latest_close", close));
             result.put("daily_highest", Map.of(
                     "price", dailyHigh,
                     "timestamp_utc", dailyHighTimestamp,
-                    "timestamp_sydney", sydneyTime
-            ));
+                    "timestamp_sydney", sydneyTime));
             result.put("earliest_open_days", Map.of(
                     "timestamp", earliestTimestamp,
-                    "days_ago", daysAgo
-            ));
+                    "days_ago", daysAgo));
             result.put("high", high);
             result.put("low", low);
             return result;

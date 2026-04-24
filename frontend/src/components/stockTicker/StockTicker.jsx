@@ -7,13 +7,15 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
     const [stocks, setStocks] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [source, setSource] = useState('AlpacaMarkets');
+    const [source, setSource] = useState('alpaca');
     const [showSourceMenu, setShowSourceMenu] = useState(false);
     const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
     const sourceButtonRef = useRef(null);
     const [showTicker, setShowTicker] = useState(false);
 
     const pendingRequests = useRef({});
+
+    const sourceLabel = source === 'finnhub' ? 'Finnhub' : 'AlpacaMarkets';
 
     const fetchAllStocks = useCallback(async () => {
         // Don't check showTickerRef here - rely on the calling useEffect
@@ -23,9 +25,7 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
             setLoading(true);
 
             const promises = symbols.map(symbol => {
-                const url = source === 'AlpacaMarkets'
-                    ? `/api/stocks/${symbol}/json`
-                    : `/api/stocks/${symbol}/json?source=${source}`;
+                const url = `/api/stocks/${symbol}/json?source=${source}`;
 
                 if (pendingRequests.current[url]) {
                     return pendingRequests.current[url];
@@ -45,11 +45,14 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
                         // Handle both nested (stockInfo) and flat response structures
                         const stockInfo = data?.stockInfo || data;
                         const riseOrDrop = stockInfo.rise_or_drop || {};
-                        const dailyHighestObj = stockInfo.daily_highest || {};
+                        const dailyHighestObj = stockInfo.daily_highest || {
+                            price: stockInfo.high || stockInfo.highest || 0,
+                            timestamp_sydney: stockInfo.daily_highest?.timestamp_sydney || stockInfo.daily_highest?.timestamp || ''
+                        };
 
-                        const currentPrice = parseFloat(riseOrDrop.latest_close) || 0;
-                        const openingPrice = parseFloat(riseOrDrop.opening) || 0;
-                        const dailyHigh = parseFloat(dailyHighestObj.price) || 0;
+                        const currentPrice = parseFloat(riseOrDrop.latest_close || stockInfo.current || stockInfo.c) || 0;
+                        const openingPrice = parseFloat(riseOrDrop.opening || stockInfo.open || stockInfo.o) || 0;
+                        const dailyHigh = parseFloat(dailyHighestObj.price) || parseFloat(stockInfo.high || stockInfo.h) || 0;
                         const change = parseFloat(riseOrDrop.change) || 0;
                         const percentChange = parseFloat(riseOrDrop.change_percent) || 0;
 
@@ -133,10 +136,12 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
 
     const formatChange = (change, changePercent) => {
         if (change === undefined || change === null || change === 0) return '';
-        const sign = parseFloat(change) >= 0 ? '+' : '';
-        const percentSign = parseFloat(changePercent) >= 0 ? '+' : '';
-        const changeValue = Math.abs(parseFloat(change)).toFixed(2);
-        const percentValue = Math.abs(parseFloat(changePercent)).toFixed(2);
+        const numericChange = parseFloat(change);
+        const numericPercent = parseFloat(changePercent);
+        const sign = numericChange > 0 ? '+' : numericChange < 0 ? '-' : '';
+        const percentSign = numericPercent > 0 ? '+' : numericPercent < 0 ? '-' : '';
+        const changeValue = Math.abs(numericChange).toFixed(2);
+        const percentValue = Math.abs(numericPercent).toFixed(2);
         return `${sign}${changeValue} (${percentSign}${percentValue}%)`;
     };
 
@@ -173,15 +178,15 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
                     }}
                 >
                     <button
-                        onClick={() => selectSource('AlpacaMarkets')}
-                        className={source === 'AlpacaMarkets' ? styles.active : ''}
+                        onClick={() => selectSource('alpaca')}
+                        className={source === 'alpaca' ? styles.active : ''}
                     >
                         <span className={styles.menuIcon}>📊</span>
                         AlpacaMarkets
                     </button>
                     <button
-                        onClick={() => selectSource('Finnhub')}
-                        className={source === 'Finnhub' ? styles.active : ''}
+                        onClick={() => selectSource('finnhub')}
+                        className={source === 'finnhub' ? styles.active : ''}
                     >
                         <span className={styles.menuIcon}>📈</span>
                         Finnhub
@@ -216,15 +221,15 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
                                         ref={sourceButtonRef}
                                         className={styles['source-toggle']}
                                         onClick={toggleSourceMenu}
-                                        title={`Source: ${source}`}
+                                        title={`Source: ${sourceLabel}`}
                                     >
-                                        {source === 'AlpacaMarkets' ? '📊 A' : '📈 F'}
+                                        {source === 'alpaca' ? '📊 A' : '📈 F'}
                                         <span className={styles.dropdownArrow}>▼</span>
                                     </button>
                                 </div>
                                 <SourceMenuPortal />
                                 <div className={styles.loadingText}>
-                                    Loading from {source}...
+                                    Loading from {sourceLabel}...
                                 </div>
                             </>
                         ) : (
@@ -234,9 +239,9 @@ const StockTicker = ({ symbols = ['TRIP'] }) => {
                                         ref={sourceButtonRef}
                                         className={styles['source-toggle']}
                                         onClick={toggleSourceMenu}
-                                        title={`Source: ${source}`}
+                                        title={`Source: ${sourceLabel}`}
                                     >
-                                        {source === 'AlpacaMarkets' ? '📊' : '📈'}
+                                        {source === 'alpaca' ? '📊' : '📈'}
                                         <span className={styles.dropdownArrow}>▼</span>
                                     </button>
                                     <SourceMenuPortal />

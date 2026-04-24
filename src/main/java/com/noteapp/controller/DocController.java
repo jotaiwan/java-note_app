@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/docs")
 public class DocController {
 
-    @Value("${app.docs.base-path:${user.home}/docs}")
+    @Value("${note.app.docs.base-path}")
     private String docsBasePath;
 
     @GetMapping("/{lang}/list")

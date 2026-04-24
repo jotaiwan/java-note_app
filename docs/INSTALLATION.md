@@ -48,9 +48,9 @@ Edit `.env` (used by `docker-compose.yml`) or `application-dev.properties` for l
 
 | Variable | Default | Required | Description |
 |----------|---------|----------|-------------|
-| `DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC connection URL |
-| `DB_USER` | `dev` | | Database username |
-| `DB_PASSWORD` | — | ✅ | Database password |
+| `NOTE_APP_JDBC_DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC connection URL |
+| `NOTE_APP_JDBC_DB_USER` | `dev` | | Database username |
+| `NOTE_APP_JDBC_DB_PASSWORD` | — | ✅ | Database password |
 | `SITES_CONFIGURATION_CREDENTIALS` | — | ✅ | Absolute path to `credentials.json` |
 
 For local dev, these map to `src/main/resources/application-dev.properties`:
@@ -244,9 +244,9 @@ nano .env
 
 | 變量 | 默認值 | 必填 | 說明 |
 |------|--------|------|------|
-| `DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC 連接 URL |
-| `DB_USER` | `dev` | | 數據庫用戶名 |
-| `DB_PASSWORD` | — | ✅ | 數據庫密碼 |
+| `NOTE_APP_JDBC_DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC 連接 URL |
+| `NOTE_APP_JDBC_DB_USER` | `dev` | | 數據庫用戶名 |
+| `NOTE_APP_JDBC_DB_PASSWORD` | — | ✅ | 數據庫密碼 |
 | `SITES_CONFIGURATION_CREDENTIALS` | — | ✅ | `credentials.json` 文件的絕對路徑 |
 
 本地開發對應 `src/main/resources/application-dev.properties`：

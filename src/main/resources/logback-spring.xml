@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Register custom converter for removing com.noteapp prefix -->
+    <conversionRule conversionWord="customLogger" converterClass="com.noteapp.util.LoggerNameConverter" />
+
+    <!-- Console appender with custom pattern -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSSSS} [%-5level] [%customLogger] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Spring profiles -->
+    <springProfile name="dev">
+        <logger name="com.noteapp" level="DEBUG" />
+        <logger name="org.hibernate.SQL" level="DEBUG" />
+        <logger name="org.springframework.web" level="WARN" />
+    </springProfile>
+
+    <springProfile name="!dev">
+        <logger name="com.noteapp" level="INFO" />
+        <logger name="org.springframework.web" level="WARN" />
+    </springProfile>
+</configuration>
