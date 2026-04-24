@@ -9,15 +9,15 @@ services:
       SPRING_PROFILES_ACTIVE: docker
       DEV: "false"
       SERVER_PORT: 5099
-      DB_URL: ${NOTE_APP_JDBC_DB_URL:-jdbc:postgresql://localhost:5432/note}
-      DB_USER: ${NOTE_APP_JDBC_DB_USER}
-      DB_PASSWORD: ${NOTE_APP_JDBC_DB_PASSWORD}
+      NOTE_APP_JDBC_DB_URL: ${NOTE_APP_JDBC_DB_URL}
+      NOTE_APP_JDBC_DB_USER: ${NOTE_APP_JDBC_DB_USER}
+      NOTE_APP_JDBC_DB_PASSWORD: ${NOTE_APP_JDBC_DB_PASSWORD}
       SITES_CONFIGURATION_CREDENTIALS: /app/configs/sites/credentials.json
     volumes:
       - ./docs:/app/docs
       - ./src:/app/src
       - ./pom.xml:/app/pom.xml
-      - ${HOME}/room/configs/sites:/app/configs/sites:ro
+      - ${USER_PROFILE}/configs/sites:/app/configs/sites:ro
     restart: unless-stopped
 
   nginx:
