@@ -12,12 +12,13 @@ services:
       NOTE_APP_JDBC_DB_URL: ${NOTE_APP_JDBC_DB_URL}
       NOTE_APP_JDBC_DB_USER: ${NOTE_APP_JDBC_DB_USER}
       NOTE_APP_JDBC_DB_PASSWORD: ${NOTE_APP_JDBC_DB_PASSWORD}
-      SITES_CONFIGURATION_CREDENTIALS: /app/configs/sites/credentials.json
+      note.app.credential-file: /app/configs/sites/credentials.json
+      HOME_SITE_CONFIGS: /app/configs/sites
     volumes:
       - ./docs:/app/docs
       - ./src:/app/src
       - ./pom.xml:/app/pom.xml
-      - ${USER_PROFILE}/configs/sites:/app/configs/sites:ro
+      - ${SITES_CONFIG_FOLDER}:/app/configs/sites:ro
     restart: unless-stopped
 
   nginx:

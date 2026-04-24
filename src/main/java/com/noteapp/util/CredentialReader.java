@@ -16,9 +16,10 @@ public class CredentialReader {
     private static final Logger log = LoggerFactory.getLogger(CredentialReader.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    // Resolved from env var SITES_CONFIGURATION_CREDENTIALS (set in ~/.bashrc and forwarded by docker-compose).
-    // Falls back to the explicit path if the env var is not set.
-    @Value("${note.app.credential-file:${user.home}/room/configs/sites/credentials.json}")
+    // Resolved from application property note.app.credential-file.
+    // This is typically set via SITES_CONFIGURATION_CREDENTIALS or HOME_SITE_CONFIGS.
+    // Fallback path: ${HOME_SITE_CONFIGS}/credentials.json, then ${user.home}/configs/sites/credentials.json.
+    @Value("${note.app.credential-file:${HOME_SITE_CONFIGS:${user.home}/configs/sites}/credentials.json}")
     private String credentialFilePath;
 
     private JsonNode cachedCredentials;
@@ -59,7 +60,7 @@ public class CredentialReader {
 
     private JsonNode loadCredentials() {
         if (cachedCredentials != null) return cachedCredentials;
-        // app.credential-file is already resolved from SITES_CONFIGURATION_CREDENTIALS
+        // app.credential-file is already resolved from SITES_CONFIGS_CREDENTIALS
         // via Spring property binding in application*.properties — use it directly.
         String path = credentialFilePath;
         log.info("Loading credentials from: {}", path);

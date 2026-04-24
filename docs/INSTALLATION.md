@@ -51,7 +51,7 @@ Edit `.env` (used by `docker-compose.yml`) or `application-dev.properties` for l
 | `NOTE_APP_JDBC_DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC connection URL |
 | `NOTE_APP_JDBC_DB_USER` | `dev` | | Database username |
 | `NOTE_APP_JDBC_DB_PASSWORD` | — | ✅ | Database password |
-| `SITES_CONFIGURATION_CREDENTIALS` | — | ✅ | Absolute path to `credentials.json` |
+| `SITES_CONFIGS_CREDENTIALS` | — | ✅ | Absolute path to `credentials.json` |
 
 For local dev, these map to `src/main/resources/application-dev.properties`:
 ```properties
@@ -247,7 +247,7 @@ nano .env
 | `NOTE_APP_JDBC_DB_URL` | `jdbc:postgresql://localhost:5432/note` | | JDBC 連接 URL |
 | `NOTE_APP_JDBC_DB_USER` | `dev` | | 數據庫用戶名 |
 | `NOTE_APP_JDBC_DB_PASSWORD` | — | ✅ | 數據庫密碼 |
-| `SITES_CONFIGURATION_CREDENTIALS` | — | ✅ | `credentials.json` 文件的絕對路徑 |
+| `SITES_CONFIGS_CREDENTIALS` | — | ✅ | `credentials.json` 文件的絕對路徑 |
 
 本地開發對應 `src/main/resources/application-dev.properties`：
 ```properties

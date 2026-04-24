@@ -22,7 +22,7 @@ A note management web application.
 git clone https://github.com/yourname/note-app.git
 cd note-app
 
-cp .env.template .env   # then fill in DB_PASSWORD & SITES_CONFIGURATION_CREDENTIALS
+cp .env.template .env   # then fill in DB_PASSWORD & SITES_CONFIGS_CREDENTIALS
 
 ./lup.sh                # starts Spring Boot (5099) + frontend (5000 via nginx)
 ```
@@ -99,7 +99,7 @@ note-app/
 git clone https://github.com/yourname/note-app.git
 cd note-app
 
-cp .env.template .env   # 填寫 DB_PASSWORD 和 SITES_CONFIGURATION_CREDENTIALS
+cp .env.template .env   # 填寫 DB_PASSWORD 和 SITES_CONFIGS_CREDENTIALS
 
 ./lup.sh                # 啟動 Spring Boot（5099）+ 前端（5000 via nginx）
 ```
