@@ -18,7 +18,7 @@ services:
       - ./docs:/app/docs
       - ./src:/app/src
       - ./pom.xml:/app/pom.xml
-      - ${SITES_CONFIG_FOLDER}:/app/configs/sites:ro
+      - ${SITES_CONFIGS_FOLDER}:/app/configs/sites:ro
     restart: unless-stopped
 
   nginx:
